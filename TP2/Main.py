@@ -2,7 +2,7 @@
 """
 Created on Wed Dec 19 13:34:46 2018
 
-@author: anton
+@author: MrWormsy (AKA Antonin ROSA-MARTIN)
 """
 
 from BinaryTree import BinaryNode
@@ -38,8 +38,7 @@ def main():
     tree = BinaryTree.BinaryTree(0, n4, n14)
     """
     
-    #Test de construction d'un ABR de recherche
-    #(0, 1, 3, 5, 6, 9)
+    #Here we are making a Binary Search Tree (we will call them tree in the future) by ourself
     
     n0 = BinaryNode(0)
     n1 = BinaryNode(1, n0, None)
@@ -57,9 +56,6 @@ def main():
     #List 
     theList = [5,3,6,9,1, 14, 15 ,18 ,12, 24, 87, 45, 14, 15, 25,26,27,28,29,30,31,32,32,34,35,36,37]
     
-    #Print the list
-    print("\n",theList, "\n")
-    
     #Check if a value exists in the given tree
     numberOfAttempts = 36
     for i in range(0, numberOfAttempts):
@@ -68,6 +64,7 @@ def main():
         print("List research:", existsInList(theList, i))
         print(" ")
       
+    #Then do some stats
     binaryTreeAverage = 0
     listAverage = 0 
     for i in range(0, numberOfAttempts):
@@ -77,14 +74,28 @@ def main():
     print("The average for the Binary tree is :", binaryTreeAverage/numberOfAttempts) #Si on avait N valeurs la moyenne tendrait vers ln(N)
     print("The average for the List is :", listAverage/numberOfAttempts) #Si on avait N valeurs la moyenne tendrait vers N/2
     
-    newTree = BinaryNode.fromList(theList)
-    
     print("\n\n")
     
+    #Now we are making a tree with a list
+    newTree = BinaryNode.fromList(theList)
     newTree.display()
     
+    newTree.addNode(100)
+    newTree.addNode(84)
+    newTree.addNode(85)
+    newTree.addNode(86)
+    newTree.addNode(44)
+    newTree.display()
+      
+    #We balance a tree using the list made of the tree's values
+    newTree2 = newTree.balance()
+    newTree2.display()
+
     
-    
+"""
+Return True if a value exists in a list
+existsInList : List, int --> boolean
+"""
 def existsInList(l, value):
     cpt = 0
     for e in l:
